@@ -16,7 +16,6 @@ export const createUser = async (user) => {
     email,
     password: hashedPassword,
   };
-
   usersCollection.push(newUser);
 
   return newUser;

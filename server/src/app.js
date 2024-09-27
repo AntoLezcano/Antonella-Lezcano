@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // routes
-app.use("/orders", authRouter);
-app.use("/auth", ordersRouter);
+app.use("/api", authRouter);
+app.use("/api", ordersRouter);
 
 // error handler
 app.use((err, _req, res, _next) => {

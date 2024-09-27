@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createOrderCtrl, getOrdersCtrl } from "../controllers/order.controller.js";
-import { applyValidations } from "../middlewares/apply.validations.js";
+import { applyValidations } from "../validations/apply.validations.js";
 import { createOrderValidation } from "../validations/orders.validations.js";
 
 
