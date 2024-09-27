@@ -2,7 +2,7 @@ import crypto from "crypto";
 
 let ordersCollection = [];
 
-// Crear una orden
+//* POST
 export const createOrder = (coffee, userId) => {
   const newOrder = {
     id: crypto.randomUUID().toString(),
@@ -15,20 +15,22 @@ export const createOrder = (coffee, userId) => {
   return newOrder;
 };
 
+//* GET
 export const getOrders = (userId) => {
   return ordersCollection.filter((coffee) => coffee.userId === userId);
 };
 
-// ! FALTA IMPLEMENTAR (NO SE USA EN EL PROYECTO)
+//* GET BY ID
 export const getOrderById = (id, userId) => {
   return (
+    ordersCollection.find((coffee) => coffee.id === id) ||
     ordersCollection.find(
       (coffee) => coffee.id === id && coffee.userId === userId
     ) || null
   );
 };
 
-// ! FALTA IMPLEMENTAR (NO SE USA EN EL PROYECTO)
+//* DELETE
 export const deleteOrderById = (id, userId) => {
   const deletedOrder = ordersCollection.find(
     (coffee) => coffee.id === id && coffee.userId === userId
@@ -36,5 +38,6 @@ export const deleteOrderById = (id, userId) => {
   ordersCollection = ordersCollection.filter(
     (coffee) => coffee.id !== id && coffee.userId === userId
   );
+  ordersCollection.push(deletedOrder);
   return deletedOrder;
 };

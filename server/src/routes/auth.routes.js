@@ -1,15 +1,8 @@
 import { Router } from "express";
-import {
-  signInCtrl,
-  getMeCtrl,
-  signUpCtrl,
-} from "../controllers/auth.controller.js";
+import { signInCtrl, getMeCtrl, signUpCtrl, } from "../controllers/auth.controller.js";
 import { validateJwt } from "../middlewares/validateJwt.js";
-import {
-  signInValidation,
-  signUpValidation,
-} from "../validations/auth.validations.js";
-import { applyValidations } from "../validations/apply.validations.js";
+import { signInValidation, signUpValidation } from "../validations/auth.validations.js";
+import { applyValidations } from "../middlewares/apply.validations.js";
 
 const authRouter = Router();
 

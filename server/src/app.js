@@ -20,10 +20,12 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//fin middlewares
+
 
 // routes
-app.use("/auth", authRouter);
-app.use("/orders", ordersRouter);
+app.use("/orders", authRouter);
+app.use("/auth", ordersRouter);
 
 // error handler
 app.use((err, _req, res, _next) => {
@@ -32,7 +34,7 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ message: "Internal server error" });
 });
 
-// NO SE DEBE CAMBIAR EL PUERTO
+// server
 app.listen(4321, () => {
   console.log("Server is running on http://localhost:4321");
 });
