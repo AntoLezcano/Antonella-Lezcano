@@ -10,7 +10,7 @@ import { listOfOrders } from "./components/listOfOrders";
 const $root = document.getElementById("root");
 
 // Realizar una solicitud para obtener la sesión del usuario actual
-await fetch("http://localhost:4321/auth/me", {})
+await fetch("http://localhost:4321/api/me", {})
   .then((response) => {
     // Verificar si la respuesta es exitosa
     if (response.ok) {

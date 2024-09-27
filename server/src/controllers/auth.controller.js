@@ -9,7 +9,7 @@ export const signInCtrl = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
     const token = await createJwt(user.id);
-    res.cookie
+
     res.status(200).json({ token, user });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -19,9 +19,10 @@ export const signInCtrl = async (req, res) => {
 export const signUpCtrl = async (req, res) => {
   const { username, email, password } = req.body
   try {
-    const user = createUser({ username, email, password })
+    const newUser = { username, email, password }
+    const user = await createUser(newUser)
     const token = await createJwt(user.id)
-    req.cookie
+
     res.status(201).json({ token, user })
   } catch (error) {
     res.status(500).json({ message: error.message });
