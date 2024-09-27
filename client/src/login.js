@@ -15,17 +15,19 @@ $form.addEventListener("submit", async (e) => {
   const entries = Object.fromEntries(formData.entries());
 
   // Realizar una solicitud POST a la API de inicio de sesión
-  fetch("http://localhost:4321/auth/sign-in", {
+  fetch("http://localhost:4321/api/sign-in", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      credencials: "include",
     },
     body: JSON.stringify(entries),
   }).then((response) => {
     if (response.ok) {
-      // ! REDIRIGIR AL USUARIO A LA PÁGINA PRINCIPAL
+      window.location.href = "/main"
     } else {
-      // ! MOSTRAR UN MENSAJE DE ERROR AL USUARIO
+      console.error(response);
+
     }
   });
 });
